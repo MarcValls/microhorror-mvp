@@ -1,0 +1,17 @@
+{
+  "id": "atm_primal_fear",
+  "key": "primal_fear",
+  "display_name": "Miedo primario",
+  "description": "Exterior abierto, pero la oscuridad acecha desde todos lados.",
+  "visual_config": {
+    "color_grade": "cold_blue",
+    "vignette_intensity": 0.4,
+    "grain_intensity": 0.5,
+    "blur_edges": false
+  },
+  "audio_config": {
+    "reverb_preset": "outdoor_night",
+    "low_pass_cutoff": 1200,
+    "ambient_volume": 0.6
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "evt_door_slam",
+  "key": "door_slam",
+  "display_name": "Puerta que se cierra",
+  "event_type": "environmental",
+  "timing_rules": {
+    "trigger": "proximity",
+    "min_interval_seconds": 30,
+    "can_repeat": true,
+    "max_occurrences": 3
+  },
+  "payload_schema": {
+    "room_id": { "type": "string", "required": true },
+    "intensity": { "type": "string", "enum": ["soft", "loud"], "default": "loud" },
+    "audio_cue": { "type": "string", "default": "sfx_door_slam" }
+  }
+}

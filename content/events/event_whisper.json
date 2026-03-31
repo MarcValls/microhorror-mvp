@@ -1,0 +1,17 @@
+{
+  "id": "evt_whisper",
+  "key": "whisper",
+  "display_name": "Susurro",
+  "event_type": "audio",
+  "timing_rules": {
+    "trigger": "time_elapsed",
+    "min_interval_seconds": 45,
+    "can_repeat": true,
+    "max_occurrences": 5
+  },
+  "payload_schema": {
+    "line_key": { "type": "string", "required": true, "description": "Clave del texto del susurro en el catálogo de diálogos" },
+    "spatialized": { "type": "boolean", "default": true },
+    "audio_cue": { "type": "string", "default": "sfx_whisper_base" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "evt_object_move",
+  "key": "object_move",
+  "display_name": "Objeto que se mueve",
+  "event_type": "visual",
+  "timing_rules": {
+    "trigger": "room_enter",
+    "min_interval_seconds": 90,
+    "can_repeat": false,
+    "max_occurrences": 1
+  },
+  "payload_schema": {
+    "object_id": { "type": "string", "required": true, "description": "Identificador del prop en la escena" },
+    "animation": { "type": "string", "enum": ["fall", "slide", "rotate"], "default": "fall" },
+    "audio_cue": { "type": "string", "default": "sfx_object_fall" }
+  }
+}

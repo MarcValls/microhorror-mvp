@@ -1,0 +1,17 @@
+{
+  "id": "atm_oppressive",
+  "key": "oppressive",
+  "display_name": "Opresivo",
+  "description": "Atmósfera sofocante, sin espacio para respirar.",
+  "visual_config": {
+    "color_grade": "desaturated_warm",
+    "vignette_intensity": 0.6,
+    "grain_intensity": 0.3,
+    "blur_edges": true
+  },
+  "audio_config": {
+    "reverb_preset": "small_room",
+    "low_pass_cutoff": 800,
+    "ambient_volume": 0.8
+  }
+}

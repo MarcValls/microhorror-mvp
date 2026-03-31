@@ -1,0 +1,17 @@
+{
+  "id": "evt_light_flicker",
+  "key": "light_flicker",
+  "display_name": "Parpadeo de luz",
+  "event_type": "environmental",
+  "timing_rules": {
+    "trigger": "threat_proximity",
+    "min_interval_seconds": 15,
+    "can_repeat": true,
+    "max_occurrences": -1
+  },
+  "payload_schema": {
+    "room_id": { "type": "string", "required": true },
+    "duration_seconds": { "type": "number", "default": 2.5 },
+    "flicker_pattern": { "type": "string", "enum": ["random", "rhythmic", "single"], "default": "random" }
+  }
+}
