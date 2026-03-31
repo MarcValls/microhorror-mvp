@@ -1,0 +1,18 @@
+{
+  "id": "end_escape",
+  "key": "escape",
+  "display_name": "Escapas",
+  "resolution_type": "success",
+  "conditions_schema": {
+    "type": "objective_completed",
+    "objective_id": { "type": "string", "required": true },
+    "exit_trigger": { "type": "string", "required": true, "description": "Interactuable que activa el final" }
+  },
+  "result_screen": {
+    "title_key": "ending_escape_title",
+    "body_key": "ending_escape_body",
+    "show_survived_time": true,
+    "cta_share": true,
+    "cta_replay": true
+  }
+}

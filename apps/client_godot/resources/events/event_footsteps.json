@@ -1,0 +1,17 @@
+{
+  "id": "evt_footsteps",
+  "key": "footsteps",
+  "display_name": "Pasos",
+  "event_type": "audio",
+  "timing_rules": {
+    "trigger": "time_elapsed",
+    "min_interval_seconds": 60,
+    "can_repeat": true,
+    "max_occurrences": 4
+  },
+  "payload_schema": {
+    "direction": { "type": "string", "enum": ["above", "below", "side", "behind"], "default": "behind" },
+    "surface": { "type": "string", "enum": ["wood", "concrete", "gravel"], "default": "wood" },
+    "audio_cue": { "type": "string", "default": "sfx_footsteps_wood" }
+  }
+}

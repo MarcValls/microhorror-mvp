@@ -46,11 +46,11 @@ func set_access_token(token: String) -> void:
 # ---------------------------------------------------------------------------
 
 func create_project(payload: Dictionary) -> Dictionary:
-	return await _post("/rest/v1/project", payload)
+	return await _post("/rest/v1/projects", payload)
 
 
 func save_draft(project_id: String, payload: Dictionary) -> Dictionary:
-	return await _patch("/rest/v1/project?id=eq." + project_id, payload)
+	return await _patch("/rest/v1/projects?id=eq." + project_id, payload)
 
 
 func publish_project(project_id: String) -> Dictionary:

@@ -1,0 +1,17 @@
+{
+  "id": "atm_clinical_dread",
+  "key": "clinical_dread",
+  "display_name": "Terror clínico",
+  "description": "Luz fría y entornos estériles que amplifican lo que no debería estar ahí.",
+  "visual_config": {
+    "color_grade": "cold_white",
+    "vignette_intensity": 0.3,
+    "grain_intensity": 0.15,
+    "blur_edges": false
+  },
+  "audio_config": {
+    "reverb_preset": "large_corridor",
+    "low_pass_cutoff": 2000,
+    "ambient_volume": 0.5
+  }
+}

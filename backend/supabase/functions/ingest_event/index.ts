@@ -100,7 +100,7 @@ Deno.serve(async (req: Request) => {
     });
   }
 
-  const { error: insertError } = await supabase.from("analytics_event").insert(rows);
+  const { error: insertError } = await supabase.from("analytics_events").insert(rows);
 
   if (insertError) {
     return new Response(

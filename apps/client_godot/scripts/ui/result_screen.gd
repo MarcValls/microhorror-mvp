@@ -20,19 +20,18 @@ func _ready() -> void:
 	btn_replay.pressed.connect(_on_replay_pressed)
 	btn_back.pressed.connect(_on_back_pressed)
 
-	# Recibir datos del final vía GameState / EventBus
-	EventBus.game_session_completed.connect(_on_session_completed, CONNECT_ONE_SHOT)
+	# Cargar el final activo desde GameState (set por RuntimeSession antes de la transición)
+	var ending_key := GameState.active_ending_key
+	if not ending_key.is_empty():
+		_ending = ContentCatalog.get_ending(ending_key)
+	_project_id = GameState.active_project.id if GameState.active_project else ""
+	_survived_seconds = GameState.active_survived_seconds
+	_refresh_ui()
 
 
 func setup(project_id: String, ending: EndingData, survived_seconds: int) -> void:
 	_project_id = project_id
 	_ending = ending
-	_survived_seconds = survived_seconds
-	_refresh_ui()
-
-
-func _on_session_completed(project_id: String, outcome: String, survived_seconds: int) -> void:
-	_project_id = project_id
 	_survived_seconds = survived_seconds
 	_refresh_ui()
 

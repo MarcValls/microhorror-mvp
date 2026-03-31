@@ -1,5 +1,8 @@
 -- Migration: 001_initial_schema
--- Descripción: esquema inicial para usuarios, proyectos, sesiones, assets y feature flags
+-- DEPRECADA: este esquema usa nombres singulares y FKs UUID para template/threat/atmosphere.
+-- El esquema canónico actual es 20260331_0001_init_schema.sql (nombres plurales, claves de texto).
+-- Este archivo se conserva como referencia histórica. NO ejecutar junto con 20260331.
+-- Descripción original: esquema inicial para usuarios, proyectos, sesiones, assets y feature flags
 
 -- ============================================================
 -- Extensiones

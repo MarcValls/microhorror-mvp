@@ -45,8 +45,6 @@ func _setup_environment() -> void:
 func _start_session() -> void:
 	session_timer.start()
 	EventBus.emit_signal("game_session_started", project.id)
-	if not _is_playtest:
-		await BackendClient.ingest_event("game_session_started", {}, project.id)
 
 
 func _process(delta: float) -> void:
@@ -59,21 +57,21 @@ func trigger_ending(ending_key: String) -> void:
 	var ending: EndingData = ContentCatalog.get_ending(ending_key)
 	if ending == null:
 		return
-	EventBus.emit_signal("ending_reached", ending_key)
-	EventBus.emit_signal(
-		"game_session_completed",
-		project.id,
-		ending.resolution_type,
-		survived_seconds
-	)
-	if not _is_playtest:
-		await BackendClient.ingest_event("game_session_completed", {
-			"ending_id": ending_key,
-			"survived_seconds": survived_seconds,
-			"completed": ending.resolution_type == "success",
-		}, project.id)
+	if _is_playtest:
+		EventBus.emit_signal("playtest_ended", project.id, ending.resolution_type, survived_seconds)
+	else:
+		EventBus.emit_signal("ending_reached", ending_key, survived_seconds)
+		EventBus.emit_signal(
+			"game_session_completed",
+			project.id,
+			ending.resolution_type,
+			survived_seconds,
+			ending_key
+		)
 	_show_result_screen(ending)
 
 
 func _show_result_screen(ending: EndingData) -> void:
+	GameState.active_ending_key = ending.key
+	GameState.active_survived_seconds = survived_seconds
 	EventBus.emit_signal("screen_transition_requested", "res://scenes/ui/result_screen.tscn")

@@ -1,0 +1,18 @@
+{
+  "id": "thr_presence",
+  "key": "presence",
+  "display_name": "La presencia",
+  "description": "Una amenaza invisible que se percibe por el ambiente: temperatura, sonidos y objetos que se mueven solos.",
+  "behavior_config": {
+    "detection_radius": 6.0,
+    "chase_speed": 0.0,
+    "idle_speed": 0.0,
+    "visibility": "none",
+    "aggression_curve": "constant_ambient",
+    "special_ability": "move_objects_and_drop_temperature",
+    "audio_cue_idle": "sfx_presence_hum",
+    "audio_cue_chase": "sfx_presence_surge",
+    "patience_seconds": -1,
+    "can_open_doors": true
+  }
+}

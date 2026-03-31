@@ -7,13 +7,13 @@ extends Node
 signal project_created(project_id: String)
 signal project_draft_saved(project_id: String)
 signal playtest_started(project_id: String)
-signal playtest_ended(project_id: String, outcome: String)
+signal playtest_ended(project_id: String, outcome: String, duration_seconds: int)
 signal project_published(project_id: String, slug: String)
 
 # --- Ciclo de juego ---
 signal game_session_started(project_id: String)
-signal game_session_completed(project_id: String, outcome: String, survived_seconds: int)
-signal ending_reached(ending_id: String)
+signal game_session_completed(project_id: String, outcome: String, survived_seconds: int, ending_id: String)
+signal ending_reached(ending_id: String, survived_seconds: int)
 signal result_shared(project_id: String, channel: String)
 
 # --- UI ---

@@ -1,5 +1,9 @@
--- Seed: catálogo inicial de contenido para el MVP
--- Ejecutar después de la migración 001_initial_schema.sql
+-- Seed: catálogo inicial de contenido para el MVP (COMPATIBILIDAD CON ESQUEMA 001)
+-- NOTA: Este archivo pertenece al esquema 001_initial_schema.sql (DEPRECADO).
+-- El esquema canónico 20260331_0001_init_schema.sql NO tiene tablas de catálogo
+-- (template_definitions, threat_definitions, etc.): el catálogo de contenido vive en
+-- los archivos JSON del cliente Godot en apps/client_godot/resources/.
+-- Usar seed.sql para poblar feature_entitlements en el esquema 20260331.
 
 -- ============================================================
 -- Plantillas
@@ -12,7 +16,7 @@ values
     'claustrofóbico',
     5,
     'normal',
-    '{"environment":"interior_dark","lighting_preset":"candle_flicker","audio_ambience":"ambient_abandoned_house","starting_room":"entrance_hall","rooms":["entrance_hall","living_room","kitchen","basement"],"fog_density":0.4,"default_atmosphere_preset":"atm_oppressive"}'
+    '{"environment":"interior_dark","lighting_preset":"candle_flicker","audio_ambience":"ambient_abandoned_house","starting_room":"entrance_hall","rooms":["entrance_hall","living_room","kitchen","basement"],"fog_density":0.4,"default_atmosphere_preset":"oppressive"}'
   ),
   (
     'forest_night',
@@ -20,7 +24,7 @@ values
     'abierto y opresivo',
     7,
     'difícil',
-    '{"environment":"exterior_forest","lighting_preset":"moonlight_sparse","audio_ambience":"ambient_forest_night","starting_room":"forest_edge","rooms":["forest_edge","clearing","ruins","old_well"],"fog_density":0.6,"default_atmosphere_preset":"atm_primal_fear"}'
+    '{"environment":"exterior_forest","lighting_preset":"moonlight_sparse","audio_ambience":"ambient_forest_night","starting_room":"forest_edge","rooms":["forest_edge","clearing","ruins","old_well"],"fog_density":0.6,"default_atmosphere_preset":"primal_fear"}'
   ),
   (
     'hospital',
@@ -28,7 +32,7 @@ values
     'desolación y amenaza latente',
     8,
     'normal',
-    '{"environment":"interior_large","lighting_preset":"fluorescent_broken","audio_ambience":"ambient_hospital","starting_room":"main_corridor","rooms":["main_corridor","ward","operating_room","morgue","rooftop"],"fog_density":0.2,"default_atmosphere_preset":"atm_clinical_dread"}'
+    '{"environment":"interior_large","lighting_preset":"fluorescent_broken","audio_ambience":"ambient_hospital","starting_room":"main_corridor","rooms":["main_corridor","ward","operating_room","morgue","rooftop"],"fog_density":0.2,"default_atmosphere_preset":"clinical_dread"}'
   );
 
 -- ============================================================
