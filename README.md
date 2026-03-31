@@ -25,7 +25,7 @@ El MVP no busca resolver comunidad profunda ni herramientas avanzadas de creaci�
 ├── .editorconfig
 ├── .gitignore
 ├── apps/
-│   └── client_unity/
+│   └── client_godot/
 ├── backend/
 │   └── supabase/
 ├── content/
@@ -49,7 +49,7 @@ El MVP no busca resolver comunidad profunda ni herramientas avanzadas de creaci�
 
 ## Stack propuesto
 
-- Cliente: Unity
+- Cliente: Godot 5.4.1
 - Backend: Supabase
 - Contenido: configuración data-driven
 - Distribución inicial: app móvil con publicación por enlace

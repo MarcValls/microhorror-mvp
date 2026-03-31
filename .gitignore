@@ -8,39 +8,21 @@ Thumbs.db
 *.swp
 *.swo
 
-# Unity
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Mm]emoryCaptures/
-UserSettings/
+# Godot
+.godot/
+*.import
+export.cfg
+export_presets.cfg
 
-# Unity generated meta files for packages cache are ignored by default
-/[Aa]ssets/AssetStoreTools*
+# Godot-specific ignores
+.gdignore
 
-# Addressables and caches
-/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
+# Mono / C# (if used alongside GDScript)
+.mono/
+data_*/
 
-# Visual Studio / Rider
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
+# Godot build outputs
+builds/
 
 # Node and tooling
 node_modules/

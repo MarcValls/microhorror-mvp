@@ -23,10 +23,10 @@ Una persona del equipo puede crear un proyecto simple con una plantilla, ejecuta
 - acordar matriz de dispositivos objetivo
 
 ## Tareas de cliente
-- shell de navegación
-- escena base del runtime
-- panel mínimo del editor
-- integración de configuración por datos
+- shell de navegación (SceneTree + autoloads)
+- escena base del runtime en primera persona
+- panel mínimo del editor (presets y módulos)
+- integración de configuración por datos (Resources de Godot)
 
 ## Tareas de backend
 - esquema mínimo para User y Project
