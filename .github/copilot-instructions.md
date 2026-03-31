@@ -35,6 +35,9 @@ Read these files before proposing or implementing major changes:
 - `agents/README.md`
 - `docs/workflows/task_brief_template.md`
 - `docs/workflows/handoff_template.md`
+- `docs/workflows/supabase_deployment_runbook.md`
+- `backend/supabase/README.md`
+- `backend/supabase/.env.example`
 - `.github/ISSUE_TEMPLATE/nueva_tarea.md`
 - `.github/pull_request_template.md`
 
@@ -50,6 +53,8 @@ Use the agent that best matches the task:
   - Use for Godot client architecture, scenes, scripts, runtime systems, playtest flow, and guided creation UX inside the app.
 - `agents/supabase_backend_system_prompt.md`
   - Use for schema design, migrations, RLS, storage, functions, publication, analytics, and backend contracts.
+- `agents/supabase_deployment_system_prompt.md`
+  - Use for the exact rollout flow of migrations, seed data, secrets, edge function deployment, and post-deploy validation in Supabase.
 - `agents/content_system_prompt.md`
   - Use for template catalogs, threats, events, endings, payload schemas, validation rules, and scalable data-driven authoring.
 
@@ -57,6 +62,7 @@ Use the agent that best matches the task:
 
 - Start with the orchestrator when the task is ambiguous, cross-functional, or affects more than one area.
 - Route to exactly one specialist when a task has a clear dominant domain.
+- Use the Supabase deployment agent when the schema already exists and the task is about rollout, secrets, remote apply, edge function deployment, or post-deploy verification.
 - Return to the orchestrator when a specialist change affects architecture, documentation, contracts, or another domain.
 - Do not let product decisions be made by the Godot or Supabase agents unless the task explicitly asks for implementation tradeoffs.
 - Do not let backend or client agents expand scope beyond documented MVP constraints.
@@ -82,6 +88,7 @@ Update documentation when any of these are true:
 - a publication flow, onboarding flow, or playtest flow changes
 - a new folder, subsystem, or architectural convention is introduced
 - an MVP acceptance criterion, scope boundary, or backlog classification changes
+- a deployment flow, secret requirement, function rollout step, or validation procedure changes
 
 Likely documentation targets:
 
@@ -94,6 +101,8 @@ Likely documentation targets:
 - `docs/mvp/backlog_p1.md`
 - `docs/mvp/acceptance_criteria.md`
 - `planning/sprint_01.md`
+- `docs/workflows/supabase_deployment_runbook.md`
+- `backend/supabase/README.md`
 
 ## Domain-specific expectations
 
@@ -117,6 +126,14 @@ Likely documentation targets:
 - make publication and slug semantics explicit
 - keep analytics linked to `project_id` and event names documented in the repo
 
+### Supabase deployment
+
+- define variables once and reuse exact paths afterward
+- separate one-time setup from repeatable rollout steps
+- prefer exact commands over vague descriptions
+- validate tables, SQL functions, edge functions, and analytics after deployment
+- call out secrets and tokens explicitly
+
 ### Content system
 
 - keep templates, threats, events, endings, and presets declarative and versionable
@@ -132,6 +149,7 @@ When appropriate, structure work using repository templates:
 - use `docs/workflows/task_brief_template.md` to define the implementation brief
 - use `docs/workflows/handoff_template.md` to transfer work from orchestrator to a specialist agent
 - use `.github/pull_request_template.md` to review whether a change respects scope, docs, and contracts
+- use `docs/workflows/supabase_deployment_runbook.md` when the task is about remote rollout in Supabase
 
 ## Default working style
 
@@ -139,7 +157,7 @@ When appropriate, structure work using repository templates:
 2. Identify the goal, affected paths, domain owner, and MVP impact.
 3. Explain assumptions, dependencies, tradeoffs, and risks.
 4. Produce the concrete output requested.
-5. Update docs when contracts, architecture, or flows changed.
+5. Update docs when contracts, architecture, flows, or rollout steps changed.
 6. End with the final recommendation, implementation summary, or next action.
 
 ## Output Format

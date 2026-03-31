@@ -21,9 +21,14 @@ Both files contain the same routing rules and project context.
 - `agents/supabase_backend_system_prompt.md`
   - Use for schema design, migrations, RLS, storage, functions, publication flow, and analytics.
 
+- `agents/supabase_deployment_system_prompt.md`
+  - Use for the exact rollout flow of migrations, seed data, secrets, edge function deployment, and post-deploy validation in Supabase.
+
 - `agents/content_system_prompt.md`
   - Use for templates, threats, events, endings, presets, payload schemas, and content validation.
 
 ## Recommended default
 
 If the task is unclear or touches several areas, start with `agents/orchestrator_system_prompt.md`.
+
+If the backend schema already exists and the task is specifically about rollout, secrets, CLI steps, or remote validation, use `agents/supabase_deployment_system_prompt.md`.

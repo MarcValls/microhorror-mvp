@@ -30,6 +30,8 @@ Read these files before proposing or implementing major changes:
 - `docs/architecture/data_model.md`
 - `docs/architecture/analytics_events.md`
 - `planning/sprint_01.md`
+- `backend/supabase/README.md`
+- `docs/workflows/supabase_deployment_runbook.md`
 
 ## Agent routing
 
@@ -39,6 +41,7 @@ Use the agent that best matches the task:
 - `agents/product_scope_guardian_system_prompt.md` for scope control, prioritization, roadmap, acceptance criteria, and PMF-oriented decisions
 - `agents/godot_client_system_prompt.md` for Godot client architecture, scenes, scripts, runtime systems, and editor UX inside the app
 - `agents/supabase_backend_system_prompt.md` for schema design, SQL migrations, RLS, storage, functions, publication, analytics, and backend contracts
+- `agents/supabase_deployment_system_prompt.md` for the exact rollout flow of migrations, seed, secrets, edge functions, and post-deploy validation in Supabase
 - `agents/content_system_prompt.md` for content definitions, template catalogs, payload schemas, validation rules, and scalable data-driven authoring
 
 ## Collaboration rules
