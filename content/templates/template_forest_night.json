@@ -1,0 +1,28 @@
+{
+  "id": "tpl_forest_night",
+  "key": "forest_night",
+  "display_name": "Bosque nocturno",
+  "mood": "abierto y opresivo",
+  "estimated_duration_minutes": 7,
+  "difficulty": "difícil",
+  "scene_config": {
+    "environment": "exterior_forest",
+    "lighting_preset": "moonlight_sparse",
+    "audio_ambience": "ambient_forest_night",
+    "starting_room": "forest_edge",
+    "rooms": ["forest_edge", "clearing", "ruins", "old_well"],
+    "fog_density": 0.6,
+    "default_atmosphere_preset": "atm_primal_fear"
+  },
+  "allowed_threats": ["thr_shadow_figure", "thr_crawler", "thr_presence"],
+  "allowed_events": [
+    "evt_footsteps",
+    "evt_whisper",
+    "evt_object_move",
+    "evt_door_slam",
+    "evt_light_flicker"
+  ],
+  "max_events": 5,
+  "default_threat": "thr_crawler",
+  "default_endings": ["end_escape", "end_consumed"]
+}

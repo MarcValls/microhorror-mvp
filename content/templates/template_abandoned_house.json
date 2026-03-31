@@ -1,0 +1,28 @@
+{
+  "id": "tpl_abandoned_house",
+  "key": "abandoned_house",
+  "display_name": "Casa abandonada",
+  "mood": "claustrofóbico",
+  "estimated_duration_minutes": 5,
+  "difficulty": "normal",
+  "scene_config": {
+    "environment": "interior_dark",
+    "lighting_preset": "candle_flicker",
+    "audio_ambience": "ambient_abandoned_house",
+    "starting_room": "entrance_hall",
+    "rooms": ["entrance_hall", "living_room", "kitchen", "basement"],
+    "fog_density": 0.4,
+    "default_atmosphere_preset": "atm_oppressive"
+  },
+  "allowed_threats": ["thr_shadow_figure", "thr_presence", "thr_crawler"],
+  "allowed_events": [
+    "evt_door_slam",
+    "evt_whisper",
+    "evt_light_flicker",
+    "evt_footsteps",
+    "evt_object_move"
+  ],
+  "max_events": 5,
+  "default_threat": "thr_shadow_figure",
+  "default_endings": ["end_escape", "end_consumed"]
+}

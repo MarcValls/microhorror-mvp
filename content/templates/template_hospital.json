@@ -1,0 +1,28 @@
+{
+  "id": "tpl_hospital",
+  "key": "hospital",
+  "display_name": "Hospital olvidado",
+  "mood": "desolación y amenaza latente",
+  "estimated_duration_minutes": 8,
+  "difficulty": "normal",
+  "scene_config": {
+    "environment": "interior_large",
+    "lighting_preset": "fluorescent_broken",
+    "audio_ambience": "ambient_hospital",
+    "starting_room": "main_corridor",
+    "rooms": ["main_corridor", "ward", "operating_room", "morgue", "rooftop"],
+    "fog_density": 0.2,
+    "default_atmosphere_preset": "atm_clinical_dread"
+  },
+  "allowed_threats": ["thr_presence", "thr_shadow_figure", "thr_crawler"],
+  "allowed_events": [
+    "evt_light_flicker",
+    "evt_door_slam",
+    "evt_whisper",
+    "evt_footsteps",
+    "evt_object_move"
+  ],
+  "max_events": 5,
+  "default_threat": "thr_presence",
+  "default_endings": ["end_escape", "end_consumed"]
+}

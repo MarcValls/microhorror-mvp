@@ -1,0 +1,18 @@
+{
+  "id": "thr_shadow_figure",
+  "key": "shadow_figure",
+  "display_name": "Figura en las sombras",
+  "description": "Una silueta humanoide que aparece y desaparece en el límite del campo visual.",
+  "behavior_config": {
+    "detection_radius": 8.0,
+    "chase_speed": 3.5,
+    "idle_speed": 1.2,
+    "visibility": "partial",
+    "aggression_curve": "escalating",
+    "special_ability": "flicker_lights_on_proximity",
+    "audio_cue_idle": "sfx_shadow_breathe",
+    "audio_cue_chase": "sfx_shadow_rush",
+    "patience_seconds": 12,
+    "can_open_doors": false
+  }
+}
