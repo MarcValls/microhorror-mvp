@@ -85,8 +85,11 @@ Deno.serve(async (req: Request) => {
       user_id: userId,
       project_id: event.project_id ?? null,
       session_id: event.session_id ?? null,
-      properties: event.properties ?? {},
-      created_at: event.occurred_at ?? new Date().toISOString(),
+      properties: {
+        ...( event.properties ?? {} ),
+        ...(event.occurred_at ? { occurred_at: event.occurred_at } : {}),
+      },
+      created_at: new Date().toISOString(),
     });
   }
 

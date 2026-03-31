@@ -22,7 +22,12 @@ func _ready() -> void:
 # ---------------------------------------------------------------------------
 
 func sign_in_anonymous() -> Dictionary:
-	return await _post("/auth/v1/signup", {"email": "", "password": ""})
+	# Supabase anon auth: POST /auth/v1/signup with no credentials
+	return await _post("/auth/v1/signup", {
+		"email": "",
+		"password": "",
+		"gotrue_meta_security": {},
+	})
 
 
 func sign_in_with_email(email: String, password: String) -> Dictionary:

@@ -19,6 +19,8 @@ GameState="*res://scripts/autoloads/game_state.gd"
 BackendClient="*res://scripts/autoloads/backend_client.gd"
 EventBus="*res://scripts/autoloads/event_bus.gd"
 ContentCatalog="*res://scripts/autoloads/content_catalog.gd"
+AnalyticsTracker="*res://scripts/autoloads/analytics_tracker.gd"
+SceneManager="*res://scripts/autoloads/scene_manager.gd"
 
 [display]
 

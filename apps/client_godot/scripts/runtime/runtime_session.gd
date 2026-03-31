@@ -12,6 +12,7 @@ var template: TemplateData
 var threat: ThreatData
 var session_id: String = ""
 var survived_seconds: int = 0
+var _survived_float: float = 0.0
 var _is_playtest: bool = false
 
 
@@ -49,7 +50,8 @@ func _start_session() -> void:
 
 
 func _process(delta: float) -> void:
-	survived_seconds += int(delta)
+	_survived_float += delta
+	survived_seconds = int(_survived_float)
 
 
 func trigger_ending(ending_key: String) -> void:

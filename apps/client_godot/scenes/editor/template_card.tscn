@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://template_card"]
+
+[ext_resource type="Script" path="res://scripts/editor/template_card.gd" id="1"]
+
+[node name="TemplateCard" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 120)
+script = ExtResource("1")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchors_preset = 15
+
+[node name="LblName" type="Label" parent="VBox"]
+text = ""
+
+[node name="LblMood" type="Label" parent="VBox"]
+text = ""
+
+[node name="LblMeta" type="Label" parent="VBox"]
+text = ""
+
+[node name="BtnSelect" type="Button" parent="VBox"]
+text = "Crear experiencia"
