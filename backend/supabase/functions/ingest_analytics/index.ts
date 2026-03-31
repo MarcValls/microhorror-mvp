@@ -16,20 +16,23 @@ serve(async (req: Request) => {
 
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
-  const authHeader = req.headers.get("Authorization");
+  const authHeader = req.headers.get("Authorization") ?? "";
 
-  if (!supabaseUrl || !supabaseAnonKey || !authHeader) {
-    return new Response(JSON.stringify({ error: "missing_environment_or_auth" }), {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return new Response(JSON.stringify({ error: "missing_environment" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
 
   const body = await req.json();
-  const projectId = body?.project_id;
+  const eventName = body?.event_name;
+  const projectId = body?.project_id ?? null;
+  const sessionId = body?.session_id ?? null;
+  const properties = body?.properties ?? {};
 
-  if (!projectId || typeof projectId !== "string") {
-    return new Response(JSON.stringify({ error: "project_id_required" }), {
+  if (!eventName || typeof eventName !== "string") {
+    return new Response(JSON.stringify({ error: "event_name_required" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
@@ -37,14 +40,15 @@ serve(async (req: Request) => {
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     global: {
-      headers: {
-        Authorization: authHeader,
-      },
+      headers: authHeader ? { Authorization: authHeader } : {},
     },
   });
 
-  const { data, error } = await supabase.rpc("publish_project", {
+  const { data, error } = await supabase.rpc("log_analytics_event", {
+    p_event_name: eventName,
     p_project_id: projectId,
+    p_session_id: sessionId,
+    p_properties: properties,
   });
 
   if (error) {
@@ -54,7 +58,7 @@ serve(async (req: Request) => {
     });
   }
 
-  return new Response(JSON.stringify({ project: data }), {
+  return new Response(JSON.stringify({ analytics_event_id: data }), {
     status: 200,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
