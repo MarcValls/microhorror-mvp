@@ -1,5 +1,12 @@
 Select the right agent prompt for the task you want to solve in this repository.
 
+## Entry points
+
+- `AGENTS.md` at the repository root — read by the GitHub Copilot Coding Agent and OpenAI Codex.
+- `.github/copilot-instructions.md` — read by GitHub Copilot Chat in VS Code and the GitHub web editor.
+
+Both files contain the same routing rules and project context.
+
 ## Available agents
 
 - `agents/orchestrator_system_prompt.md`
