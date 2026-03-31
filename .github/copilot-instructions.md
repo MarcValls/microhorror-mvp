@@ -1,10 +1,10 @@
 Create or modify this repository while protecting MVP scope, preserving a data-driven architecture, and prioritizing the loop crear -> publicar -> jugar -> compartir.
 
-This repository is for the MVP of a mobile first-person micro-horror platform. The current technical direction is Godot 5.4.1 for the client, Supabase for the backend, and a data-driven content layer. The MVP must validate whether a creator can build a short experience from a closed template, publish it through a shareable link, and generate real measurable play sessions.
+This repository is for the MVP of a mobile first-person micro-horror platform. The current technical direction is Godot 4.5 for the client, Supabase for the backend, and a data-driven content layer. The MVP must validate whether a creator can build a short experience from a closed template, publish it through a shareable link, and generate real measurable play sessions.
 
 ## Repository Constants
 
-- Client stack: Godot 5.4.1
+- Client stack: Godot 4.5
 - Backend stack: Supabase
 - Content model: data-driven templates, threats, events, endings, presets, and constrained payloads
 - Distribution model: mobile app with shareable link publication
@@ -63,6 +63,8 @@ Use the agent that best matches the task:
 - Start with the orchestrator when the task is ambiguous, cross-functional, or affects more than one area.
 - Route to exactly one specialist when a task has a clear dominant domain.
 - Use the Supabase deployment agent when the schema already exists and the task is about rollout, secrets, remote apply, edge function deployment, or post-deploy verification.
+- Treat `backend/supabase/scripts/`, `backend/supabase/.env.example`, `docs/workflows/supabase_deployment_runbook.md`, and deploy helpers in `Makefile` as deployment-domain entry points.
+- Treat `backend/supabase/migrations/`, `backend/supabase/functions/`, and `backend/supabase/seed/` as backend-domain entry points unless the task is only about rollout mechanics.
 - Return to the orchestrator when a specialist change affects architecture, documentation, contracts, or another domain.
 - Do not let product decisions be made by the Godot or Supabase agents unless the task explicitly asks for implementation tradeoffs.
 - Do not let backend or client agents expand scope beyond documented MVP constraints.

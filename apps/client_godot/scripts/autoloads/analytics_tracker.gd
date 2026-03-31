@@ -32,11 +32,10 @@ func _on_playtest_started(project_id: String) -> void:
 	}, project_id)
 
 
-func _on_playtest_ended(project_id: String, outcome: String) -> void:
-	var project: ProjectData = GameState.active_project
+func _on_playtest_ended(project_id: String, outcome: String, duration_seconds: int) -> void:
 	BackendClient.ingest_event("playtest_completed", {
 		"outcome": outcome,
-		"duration_seconds": 0,
+		"duration_seconds": duration_seconds,
 	}, project_id)
 
 
@@ -51,25 +50,31 @@ func _on_project_published(project_id: String, _slug: String) -> void:
 
 # --- Juego ---
 
-func _on_game_session_started(project_id: String) -> void:
+func _on_game_session_started(project_id: String, is_playtest: bool) -> void:
+	if is_playtest:
+		return
 	BackendClient.ingest_event("game_session_started", {
 		"entrypoint": "direct",
 		"player_type": "authenticated" if GameState.current_user != null else "anonymous",
 	}, project_id)
 
 
-func _on_game_session_completed(project_id: String, outcome: String, survived_seconds: int) -> void:
+func _on_game_session_completed(project_id: String, outcome: String, survived_seconds: int, ending_id: String, is_playtest: bool) -> void:
+	if is_playtest:
+		return
 	BackendClient.ingest_event("game_session_completed", {
 		"completed": outcome == "success",
+		"ending_id": ending_id,
 		"survived_seconds": survived_seconds,
 	}, project_id)
 
 
-func _on_ending_reached(ending_id: String) -> void:
-	var project: ProjectData = GameState.active_project
-	var project_id := project.id if project else ""
+func _on_ending_reached(project_id: String, ending_id: String, survived_seconds: int, is_playtest: bool) -> void:
+	if is_playtest:
+		return
 	BackendClient.ingest_event("ending_reached", {
 		"ending_id": ending_id,
+		"survived_seconds": survived_seconds,
 	}, project_id)
 
 

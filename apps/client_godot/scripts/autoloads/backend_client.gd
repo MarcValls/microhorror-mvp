@@ -65,7 +65,11 @@ func ingest_event(event_name: String, properties: Dictionary = {}, project_id: S
 	var body := {"event_name": event_name, "properties": properties}
 	if project_id != "":
 		body["project_id"] = project_id
-	await _post("/functions/v1/ingest_event", body)
+	await _post("/functions/v1/ingest_analytics", body)
+
+
+func ingest_events(events: Array[Dictionary]) -> Dictionary:
+	return await _request(HTTPClient.METHOD_POST, "/functions/v1/ingest_analytics", events)
 
 
 # ---------------------------------------------------------------------------
@@ -90,7 +94,7 @@ func _patch(path: String, body: Dictionary) -> Dictionary:
 	return await _request(HTTPClient.METHOD_PATCH, path, body)
 
 
-func _request(method: int, path: String, body: Dictionary) -> Dictionary:
+func _request(method: int, path: String, body: Variant) -> Dictionary:
 	var http := HTTPRequest.new()
 	add_child(http)
 	var url := _supabase_url + path

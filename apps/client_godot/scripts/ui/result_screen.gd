@@ -31,7 +31,7 @@ func setup(project_id: String, ending: EndingData, survived_seconds: int) -> voi
 	_refresh_ui()
 
 
-func _on_session_completed(project_id: String, outcome: String, survived_seconds: int) -> void:
+func _on_session_completed(project_id: String, _outcome: String, survived_seconds: int, _ending_id: String, _is_playtest: bool) -> void:
 	_project_id = project_id
 	_survived_seconds = survived_seconds
 	_refresh_ui()

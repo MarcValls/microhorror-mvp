@@ -9,7 +9,7 @@ Cerrar las decisiones que reducen ambigüedad antes de producir contenido y cód
 - definición cerrada del vertical slice
 - matriz de dispositivos objetivo
 - modelo base de proyecto y sesión
-- decisión de stack: Godot 5.4.1 + Supabase
+- decisión de stack: Godot 4.5 + Supabase
 - definición del teaser v0
 
 ### Gate

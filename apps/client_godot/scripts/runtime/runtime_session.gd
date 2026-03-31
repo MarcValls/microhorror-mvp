@@ -14,6 +14,7 @@ var session_id: String = ""
 var survived_seconds: int = 0
 var _survived_float: float = 0.0
 var _is_playtest: bool = false
+var _playtest_reported: bool = false
 
 
 func _ready() -> void:
@@ -44,9 +45,7 @@ func _setup_environment() -> void:
 
 func _start_session() -> void:
 	session_timer.start()
-	EventBus.emit_signal("game_session_started", project.id)
-	if not _is_playtest:
-		await BackendClient.ingest_event("game_session_started", {}, project.id)
+	EventBus.emit_signal("game_session_started", project.id, _is_playtest)
 
 
 func _process(delta: float) -> void:
@@ -54,24 +53,29 @@ func _process(delta: float) -> void:
 	survived_seconds = int(_survived_float)
 
 
+func _exit_tree() -> void:
+	if _is_playtest and not _playtest_reported and project != null:
+		_playtest_reported = true
+		EventBus.emit_signal("playtest_ended", project.id, "cancelled", survived_seconds)
+
+
 func trigger_ending(ending_key: String) -> void:
 	session_timer.stop()
 	var ending: EndingData = ContentCatalog.get_ending(ending_key)
 	if ending == null:
 		return
-	EventBus.emit_signal("ending_reached", ending_key)
+	if _is_playtest:
+		_playtest_reported = true
+		EventBus.emit_signal("playtest_ended", project.id, ending.resolution_type, survived_seconds)
+	EventBus.emit_signal("ending_reached", project.id, ending_key, survived_seconds, _is_playtest)
 	EventBus.emit_signal(
 		"game_session_completed",
 		project.id,
 		ending.resolution_type,
-		survived_seconds
+		survived_seconds,
+		ending_key,
+		_is_playtest
 	)
-	if not _is_playtest:
-		await BackendClient.ingest_event("game_session_completed", {
-			"ending_id": ending_key,
-			"survived_seconds": survived_seconds,
-			"completed": ending.resolution_type == "success",
-		}, project.id)
 	_show_result_screen(ending)
 
 

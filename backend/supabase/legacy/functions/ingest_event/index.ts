@@ -1,6 +1,7 @@
-// Edge Function: ingest_event
-// Recibe eventos analíticos del cliente y los persiste en analytics_event.
-// Acepta un único evento o un batch de eventos.
+// Legacy Edge Function: ingest_event
+// Conservada solo como referencia histórica.
+// Las capacidades útiles de allow-list y soporte batch viven ahora en
+// backend/supabase/functions/ingest_analytics/ dentro del contrato oficial.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -40,7 +41,6 @@ Deno.serve(async (req: Request) => {
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-  // User is optional: anonymous sessions are allowed
   let userId: string | null = null;
   const authHeader = req.headers.get("Authorization");
   if (authHeader) {
@@ -78,7 +78,7 @@ Deno.serve(async (req: Request) => {
   const rows = [];
   for (const event of events) {
     if (!event.event_name || !ALLOWED_EVENTS.has(event.event_name)) {
-      continue; // silently skip unknown events
+      continue;
     }
     rows.push({
       event_name: event.event_name,
@@ -86,7 +86,7 @@ Deno.serve(async (req: Request) => {
       project_id: event.project_id ?? null,
       session_id: event.session_id ?? null,
       properties: {
-        ...( event.properties ?? {} ),
+        ...(event.properties ?? {}),
         ...(event.occurred_at ? { occurred_at: event.occurred_at } : {}),
       },
       created_at: new Date().toISOString(),
@@ -109,8 +109,8 @@ Deno.serve(async (req: Request) => {
     );
   }
 
-  return new Response(
-    JSON.stringify({ ingested: rows.length }),
-    { status: 200, headers: { "Content-Type": "application/json" } }
-  );
+  return new Response(JSON.stringify({ ingested: rows.length }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 });

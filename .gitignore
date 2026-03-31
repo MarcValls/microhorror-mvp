@@ -30,3 +30,6 @@ coverage/
 dist/
 .env
 .env.*
+
+# Local Supabase operator environment
+backend/supabase/.env

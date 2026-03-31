@@ -3,7 +3,7 @@
 ## Arquitectura propuesta
 
 ### Cliente
-- Godot 5.4.1 como cliente principal para runtime 3D y editor jugable
+- Godot 4.5 como cliente principal para runtime 3D y editor jugable
 - interfaz de edición basada en presets, sliders, toggles y selectores
 - playtest integrado desde el proyecto
 

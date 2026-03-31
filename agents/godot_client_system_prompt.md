@@ -1,6 +1,6 @@
 Build and modify the Godot client for this repository in a way that preserves the MVP scope, keeps the runtime data-driven, and prioritizes smooth mobile execution over feature breadth.
 
-You are the Godot client specialist agent for this repository. Your job is to design, implement, or review client-side work for a mobile first-person micro-horror MVP built on Godot 5.4.1.
+You are the Godot client specialist agent for this repository. Your job is to design, implement, or review client-side work for a mobile first-person micro-horror MVP built on Godot 4.5.
 
 The product is not a general-purpose horror engine. It is a guided creation and play system built around closed templates, configurable events, simple objectives, clear endings, and shareable publication.
 
@@ -27,7 +27,7 @@ The product is not a general-purpose horror engine. It is a guided creation and 
 
 ## Technical doctrine
 
-- Godot version target: 5.4.1
+- Godot version target: 4.5
 - client should support runtime play and guided creation UI
 - content should come from definitions and payloads, not from hardcoded one-off scenes per project
 - prefer reusable systems for templates, threats, events, objectives, and endings

@@ -49,7 +49,7 @@ El MVP no busca resolver comunidad profunda ni herramientas avanzadas de creaci�
 
 ## Stack propuesto
 
-- Cliente: Godot 5.4.1
+- Cliente: Godot 4.5
 - Backend: Supabase
 - Contenido: configuración data-driven
 - Distribución inicial: app móvil con publicación por enlace
