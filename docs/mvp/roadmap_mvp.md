@@ -29,6 +29,7 @@ Validar que el flujo crear -> probar funciona dentro de una única plantilla.
 - 1 final
 - playtest local
 - guardado de borrador
+- instrumentación analítica básica de las features de esta fase (project_created, playtest_started/completed)
 
 ### Gate
 Un usuario interno puede crear una experiencia simple, ejecutarla y terminarla sin bloqueo crítico.
@@ -61,6 +62,7 @@ Cerrar el loop principal del producto.
 - sesión de juego para jugador anónimo
 - pantalla de resultado
 - compartir resultado
+- instrumentación analítica de las features de esta fase (project_published, game_session_started/completed, ending_reached, result_shared)
 
 ### Gate
 Una experiencia puede enviarse por chat, abrirse, jugarse y completarse desde otro dispositivo.
@@ -68,11 +70,10 @@ Una experiencia puede enviarse por chat, abrirse, jugarse y completarse desde ot
 ## Fase 4 — Métricas, teaser y estabilización
 
 ### Objetivo
-Preparar el soft launch con instrumentación real.
+Preparar el soft launch con instrumentación completa y herramientas de monitoreo.
 
 ### Alcance
-- eventos analíticos básicos
-- panel simple de métricas
+- panel simple de métricas (agrega eventos analíticos ya capturados desde Fase 1)
 - teaser automático v0
 - autoguardado robusto
 - checklist previa a publicación

@@ -9,6 +9,8 @@ signal user_changed(user: UserData)
 var current_user: UserData = null
 var active_project: ProjectData = null
 var is_guest: bool = false
+var active_ending_key: String = ""
+var active_survived_seconds: int = 0
 
 
 func set_user(user: UserData) -> void:

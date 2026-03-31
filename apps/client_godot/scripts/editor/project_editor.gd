@@ -115,7 +115,7 @@ func _on_publish_pressed() -> void:
 	var result := await BackendClient.publish_project(project.id)
 	if result.code == 200:
 		project.status = "published"
-		project.publish_slug = result.data.get("slug", "")
+		project.publish_slug = result.data.get("project", {}).get("publish_slug", "")
 		GameState.set_active_project(project)
 		EventBus.emit_signal("project_published", project.id, project.publish_slug)
 		lbl_status.text = "Publicado · " + project.publish_slug

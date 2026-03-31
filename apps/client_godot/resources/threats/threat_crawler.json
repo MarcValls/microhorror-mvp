@@ -1,0 +1,18 @@
+{
+  "id": "thr_crawler",
+  "key": "crawler",
+  "display_name": "El arrastrado",
+  "description": "Una criatura que se mueve en el suelo a gran velocidad. Difícil de ver, imposible de ignorar.",
+  "behavior_config": {
+    "detection_radius": 5.0,
+    "chase_speed": 6.0,
+    "idle_speed": 2.0,
+    "visibility": "full",
+    "aggression_curve": "sudden_burst",
+    "special_ability": "hidden_until_triggered",
+    "audio_cue_idle": "sfx_crawler_scratch",
+    "audio_cue_chase": "sfx_crawler_sprint",
+    "patience_seconds": 8,
+    "can_open_doors": false
+  }
+}

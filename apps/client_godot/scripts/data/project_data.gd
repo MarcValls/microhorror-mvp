@@ -16,3 +16,5 @@ extends Resource
 @export var visibility: String = "private"
 @export var publish_slug: String = ""
 @export var status: String = "draft"  # draft | ready_to_publish | published | archived
+@export var allow_remix: bool = false
+@export var published_at: String = ""

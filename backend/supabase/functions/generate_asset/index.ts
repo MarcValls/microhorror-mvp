@@ -10,7 +10,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-const ALLOWED_ASSET_TYPES = new Set(["thumbnail", "teaser_video", "cover"]);
+const ALLOWED_ASSET_TYPES = new Set(["teaser", "thumbnail_square", "thumbnail_vertical", "other"]);
 
 Deno.serve(async (req: Request) => {
   if (req.method !== "POST") {
@@ -62,14 +62,14 @@ Deno.serve(async (req: Request) => {
 
   if (!asset_type || !ALLOWED_ASSET_TYPES.has(asset_type)) {
     return new Response(
-      JSON.stringify({ error: "asset_type must be one of: thumbnail, teaser_video, cover" }),
+      JSON.stringify({ error: "asset_type must be one of: teaser, thumbnail_square, thumbnail_vertical, other" }),
       { status: 400, headers: { "Content-Type": "application/json" } }
     );
   }
 
   // Verify ownership
   const { data: project, error: projectError } = await supabase
-    .from("project")
+    .from("projects")
     .select("id, owner_id, status, title")
     .eq("id", project_id)
     .single();
@@ -90,7 +90,7 @@ Deno.serve(async (req: Request) => {
 
   // Upsert a pending generation record (one per project + asset_type)
   const { data: asset, error: upsertError } = await supabase
-    .from("generated_asset")
+    .from("generated_assets")
     .upsert(
       {
         project_id,

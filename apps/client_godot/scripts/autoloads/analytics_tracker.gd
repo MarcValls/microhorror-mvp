@@ -32,11 +32,11 @@ func _on_playtest_started(project_id: String) -> void:
 	}, project_id)
 
 
-func _on_playtest_ended(project_id: String, outcome: String) -> void:
+func _on_playtest_ended(project_id: String, outcome: String, duration_seconds: int) -> void:
 	var project: ProjectData = GameState.active_project
 	BackendClient.ingest_event("playtest_completed", {
 		"outcome": outcome,
-		"duration_seconds": 0,
+		"duration_seconds": duration_seconds,
 	}, project_id)
 
 
@@ -58,18 +58,20 @@ func _on_game_session_started(project_id: String) -> void:
 	}, project_id)
 
 
-func _on_game_session_completed(project_id: String, outcome: String, survived_seconds: int) -> void:
+func _on_game_session_completed(project_id: String, outcome: String, survived_seconds: int, ending_id: String) -> void:
 	BackendClient.ingest_event("game_session_completed", {
 		"completed": outcome == "success",
 		"survived_seconds": survived_seconds,
+		"ending_id": ending_id,
 	}, project_id)
 
 
-func _on_ending_reached(ending_id: String) -> void:
+func _on_ending_reached(ending_id: String, survived_seconds: int) -> void:
 	var project: ProjectData = GameState.active_project
 	var project_id := project.id if project else ""
 	BackendClient.ingest_event("ending_reached", {
 		"ending_id": ending_id,
+		"survived_seconds": survived_seconds,
 	}, project_id)
 
 
